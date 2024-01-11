@@ -1,25 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './App.css';
+import './Styles/Button.css'
+import './Styles/Select.css'; 
+import './Styles/Card.css'
 
+import Compras from './Components/Compras/Compras';
 import Menu from './Components/Menu';
-import { FaBars } from "react-icons/fa";
 
 const App = () => {
+
+  const [isCompras, setIsCompras] = useState(true)
+  const [isExistencias, setIsExistencias] = useState(true)
+
   return(
-    <header className="main-header">
-      <label for="btn-nav" className="btn-nav"><i className="fas fa-bars"><FaBars /></i></label>
-      <input type='checkbox' id="btn-nav"></input>
-      
-      <nav>
-        <ul className="navigation">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Servicios</a></li>
-          <li><a href="#">Nosotros</a></li>
-          <li><a href="#">Contacto</a></li>
-        </ul>
-      </nav>
-    
-  </header>
+    <>
+      <Menu setIsCompras={setIsCompras} isCompras={isCompras}
+        setIsExistencias={setIsExistencias} isExistencias={isExistencias}/>
+      {
+        isCompras
+          ?
+            <Compras />
+          :
+            null
+      }
+      {/* <img src={process.env.PUBLIC_URL + "/imagenes/" + "uno.jpg"} alt="bandera" /> */}
+    </>
   )
 }
 export default App;
