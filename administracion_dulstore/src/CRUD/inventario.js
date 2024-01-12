@@ -20,3 +20,17 @@ export const createInventario = async (compra) => {
         return error
     }
 }
+
+export const updateInventario = async (id,cantidad) => {
+    try {
+        await inventarioStore
+        .collection("inventario")
+        .doc(id)
+        .update({
+            'cantidad' : cantidad
+        })
+        return "success"
+      } catch (error) {
+        return error
+      }
+}

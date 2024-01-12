@@ -27,6 +27,23 @@
     font-weight: bold;
 }
 
+.itemblogPedido {
+	color		:	rgb(83, 26, 93);
+	font-size	:	18px;
+    font-weight: bold;
+	margin-top: 10px;
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+.itemblogEntrega {
+	color		:	rgb(33, 12, 154);
+	font-size	:	18px;
+    font-weight: bold;
+	margin-top: 10px;
+	cursor: pointer;
+}
+
 .productoImagen
 {
     height: 150px;

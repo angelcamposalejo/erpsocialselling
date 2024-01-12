@@ -6,6 +6,7 @@ import './Styles/Card.css'
 
 import Compras from './Components/Compras/Compras';
 import Menu from './Components/Menu';
+import Existencias from './Components/Existencias/Existencias';
 
 const App = () => {
 
@@ -21,7 +22,11 @@ const App = () => {
           ?
             <Compras />
           :
-            null
+            isExistencias
+              ?
+                <Existencias />
+              :
+                null
       }
       {/* <img src={process.env.PUBLIC_URL + "/imagenes/" + "uno.jpg"} alt="bandera" /> */}
     </>
