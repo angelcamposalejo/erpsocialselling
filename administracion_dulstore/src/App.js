@@ -40,11 +40,16 @@ const App = () => {
         let entradas = 0
         let salidas = 0
         for(let i=0;i<cajaList.length;i++){
-          if(cajaList[i].concepto === "Compra"){
+          if(cajaList[i].concepto === "Compra" || cajaList[i].concepto === "Gasolina" || cajaList[i].concepto === "Estacionamiento"){
             salidas = salidas + parseFloat(cajaList[i].cantidad)
           }
           else{
-            console.log(cajaList[i].concepto)
+            if(cajaList[i].concepto === "Testing" || cajaList[i].concepto === "Inversion"){
+              entradas = entradas + parseFloat(cajaList[i].cantidad)
+            }
+            else{
+              console.log(cajaList[i].concepto)
+            }
           }
         }
         let totalCaja = entradas - salidas

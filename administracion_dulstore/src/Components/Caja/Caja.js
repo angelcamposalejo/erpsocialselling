@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+
 import CajaTable from "./CajaTable";
+import RegistroCajaForm from "./RegistroCajaForm";
 
 const Caja = ({ cajaList }) => {
 
@@ -27,7 +29,7 @@ const Caja = ({ cajaList }) => {
                 {
                     isRegistro
                         ?
-                            null
+                            <RegistroCajaForm setIsRegistro={setIsRegistro} tipo={tipo}/>
                         :
                             <>
                                 <div className="wrapper">
