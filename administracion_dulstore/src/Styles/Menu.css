@@ -1,0 +1,45 @@
+.export {
+	color	: 	red !important;
+}
+
+.menu_top {
+    background	: 	#c32c71;
+	box-shadow	: 	0px 1px 6px -1px #ccc;
+	box-sizing	: 	border-box;
+    height		: 	44px;
+    padding		: 	0 10px;
+	width		: 	100%;
+    z-index		: 	1;
+	text-align: center;
+	align-items: center;
+}
+
+.opc_menu {
+	border-color	: 	gray;
+	border-style	: 	solid;
+  	border-width	: 	1px;
+	color			: 	white !important;
+	cursor			: 	pointer;
+    display			: 	inline-block;
+	font-family		: 	'Monserrat', sans-serif;
+    font-size		: 	17px;
+	margin			: 	5px 0 0 0;
+	padding			: 	5px 10px;
+	vertical-align	:	top;
+}
+
+.opc_menuSeleccionada {
+    display				: 	inline-block;
+    vertical-align		:	top;
+    font-family			: 	'Monserrat', sans-serif;
+    cursor				: 	pointer;
+	margin				: 	5px 0 0 0;
+	padding				: 	5px 20px;
+	font-size			: 	17px;
+	background-color	: 	black;
+	color				: 	white !important;
+	font-weight			: 	bold;
+	border-color		: 	gray;
+  	border-width		: 	1px;
+  	border-style		: 	solid;
+}

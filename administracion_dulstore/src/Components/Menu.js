@@ -1,5 +1,4 @@
-import React from "react";
-import { FaBars } from "react-icons/fa";
+import React, { useEffect } from "react";
 import { GiShop } from "react-icons/gi";
 import { TbShoppingCartDollar } from "react-icons/tb";
 import { GiBuyCard } from "react-icons/gi";
@@ -8,6 +7,10 @@ import { FaMoneyBillTransfer } from "react-icons/fa6";
 
 const Menu = ({ setIsCompras, isCompras,
     setIsExistencias, isExistencias }) => {
+
+    useEffect(()=>{
+        console.log(isCompras)
+    },[isCompras])
 
     const handleMenuClick = (opcion) => (event) => {
         event.preventDefault()
@@ -29,37 +32,33 @@ const Menu = ({ setIsCompras, isCompras,
     }
 
     return(
-        <header className="main-header">
-            <label for="btn-nav" className="btn-nav"><i className="fas fa-bars"><FaBars /></i></label>
-            <input type='checkbox' id="btn-nav"></input>
-            {
-                isCompras
-                    ?
-                        <nav>
-                            <ul className="navigation">
-                                <li onClick={handleMenuClick(1)}><span><GiShop /> Existencias</span></li>
-                                <li onClick={handleMenuClick(2)}><span><TbShoppingCartDollar /> Ventas</span></li>
-                                <li onClick={handleMenuClick(3)}><span className="active"><GiBuyCard /> Compras</span></li>
-                                <li onClick={handleMenuClick(4)}><span><FaShippingFast /> Pedidos</span></li>
-                                <li onClick={handleMenuClick(5)}><span><FaMoneyBillTransfer /> Caja</span></li>
-                            </ul>
-                        </nav>
-                    :
-                        isExistencias
+        <div className='menu_top'>
+                <div className='maxwidth'>
+                    {
+                        isCompras 
                             ?
-                                <nav>
-                                    <ul className="navigation">
-                                        <li onClick={handleMenuClick(1)}><span  className="active"><GiShop /> Existencias</span></li>
-                                        <li onClick={handleMenuClick(2)}><span><TbShoppingCartDollar /> Ventas</span></li>
-                                        <li onClick={handleMenuClick(3)}><span><GiBuyCard /> Compras</span></li>
-                                        <li onClick={handleMenuClick(4)}><span><FaShippingFast /> Pedidos</span></li>
-                                        <li onClick={handleMenuClick(5)}><span><FaMoneyBillTransfer /> Caja</span></li>
-                                    </ul>
-                                </nav>
+                                <>
+                                    <div className='opc_menu' onClick={handleMenuClick(1)} style={{ color: 'black' }}><GiShop /> Existencias</div>
+                                    <div className='opc_menu' onClick={handleMenuClick(2)} style={{ color: 'black' }}><FaShippingFast /> Pedidos</div>
+                                    <div className='opc_menuSeleccionada' onClick={handleMenuClick(3)} style={{ color: 'black' }}><GiBuyCard /> Compras</div>
+                                    <div className='opc_menu' onClick={handleMenuClick(4)} style={{ color: 'black' }}><TbShoppingCartDollar /> Ventas</div>
+                                    <div className='opc_menu' onClick={handleMenuClick(4)} style={{ color: 'black' }}><FaMoneyBillTransfer /> Caja</div>
+                                </>
                             :
-                                null
-            }
-        </header>
+                                isExistencias
+                                    ?
+                                        <>
+                                            <div className='opc_menuSeleccionada' onClick={handleMenuClick(1)} style={{ color: 'black' }}><GiShop /> Existencias</div>
+                                            <div className='opc_menu' onClick={handleMenuClick(2)} style={{ color: 'black' }}><FaShippingFast /> Pedidos</div>
+                                            <div className='opc_menu' onClick={handleMenuClick(3)} style={{ color: 'black' }}><GiBuyCard /> Compras</div>
+                                            <div className='opc_menu' onClick={handleMenuClick(4)} style={{ color: 'black' }}><TbShoppingCartDollar /> Ventas</div>
+                                            <div className='opc_menu' onClick={handleMenuClick(4)} style={{ color: 'black' }}><FaMoneyBillTransfer /> Caja</div>
+                                        </>
+                                    :
+                                        null
+                    }
+                </div>
+            </div>
     )
 }
 

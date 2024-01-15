@@ -57,14 +57,12 @@ const Compras = () => {
                                 <br />
                                 <br />
                                 <br />
-                                <div className={"contenedor"}>
-                                    <div className='itemservespCont'>
-                                        {
+                                <div className="contenedorCatalago">
+                                    {
                                             comprasList.map(compra => 
                                                 <CompraCard compra={compra}key={compra.id}/>
                                             )
-                                        }
-                                    </div>
+                                    }
                                 </div>
                             </>
                 }

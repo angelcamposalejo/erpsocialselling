@@ -1,140 +1,270 @@
-:root{
-    --main-color:#fff;
-  }
-  
-  *{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-  }
-  
-  body{
-    font-family:'Roboto' , 'sans-serif';
-    overflow:hidden;
-  }
-  
-  .main-header{
-    background: #c32c71;
-    width: 100%;
-    height:50px;
-  }
-  
-  nav{
-    position: absolute;
-    left:0;
-    top:0;
-    width: 200px;
-    top:50px;
-    height:calc(100vh - 50px);
-    background:#b33771;
-    transform:translateX(-100%);
-    transition:.4s ease;
-  }
-  
-  .navigation li{
-    list-style:none;
-    width: 100%;
-    border-bottom: 1px solid rgba(255,255,255,.5);
-  }
-  
-  .navigation a{
-    color:var(--main-color);
-    display: block;
-    line-height:3.5;
-    padding: 0 10px;
-    text-decoration:none;
-    transition:.4s ease;
-  }
-  
-  .navigation a:hover{
-    transform:translateX(10%);
-  }
+/* @import url('https://fonts.google.com/specimen/Montserrat?category=Sans+Serif'); */
+html, body {
+	height		:	100%;
+	margin 		:	0;
+	padding		:	0;
+	position	:	absolute;
+	width 		:	100%;
+}
 
-  .navigation span{
-    color:var(--main-color);
-    display: block;
-    line-height:3.5;
-    padding: 0 10px;
-    text-decoration:none;
-    transition:.4s ease;
-  }
-  
-  .navigation span:hover{
-    transform:translateX(10%);
-  }
-  
-  #btn-nav{
-    display: none;
-  }
-  
-  #btn-nav:checked ~ nav{
-    transform:translateX(0);
-  }
-  
-  .btn-nav{
-    color:var(--main-color);
-    font-size:30px;
-    position: absolute;
-    left:0;
-    top:0;
-    cursor:pointer;
-    padding:6.5px 15px;
-    transition:.2s ease;
-    background:rgba(0,0,0,.1);
-  }
-  
-  .btn-nav:hover{
-    background:rgba(0,0,0,.3);
-  }
+a {
+	color			:	inherit;
+	text-decoration	:	none;
+}
 
+form {
+    display		:	block;
+    margin-top	:	0em;
+}
 
-  .active{
-    font-weight: bold;
-    font-size: 20px !important;
-  }
+@media only screen and (max-width: 600px) {
+	.btn_roundf {
+		bottom		:	20px;
+	   	font-size	:	14px;
+	   	padding		:	12px 20px;
+	   	right		:	20px;
+   }
+}
 
+/**aqui**/
+.cuerpoEncabezado {
+	background-color	: 	white;
+	left				: 	0;
+	margin-top			: 	30px;
+	position			: 	fixed;
+	right				: 	0;
+	top					: 	30px;
+	z-index				: 	2;
+}
 
-  .contenedor {
-    background      :   transparent;
-    border          :   1px solid black;
-    border-radius   :   8px;
-    margin          :   10px auto;
-    text-align      :   center;
-    width           :   90%;
-  }
+.cuerpoLogin {
+	left		: 	0;
+	margin-top	: 	200px;
+	right		: 	0;
+	top			: 	200px;
+}
 
-  .contenedorEncabezado {
-    font-weight: bold;
-    font-size: 30px;
-    margin-bottom: 20px;
-  }
+.cuerpoPacientes {
+	left		: 	0;
+	margin-top	: 	0px;
+	right		: 	0;
+	text-align	: 	center;
+	top			: 	0px;
+	z-index		: 	1;
+}
 
-  .boton_actualizar{
-    background		:	#9ce239;
-    border-radius	:	25px;
-    box-shadow		:	0px 0px 2px #888;
-    cursor			:	pointer;
-    display			:	inline-block;
-    font-size		:	20px;
-    margin			:	0 10px;
-    text-align		:	center;
-    width			:	170px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-  }
-  
-  .boton_actualizar:hover, .boton_actualizar:focus{
-    box-shadow	:	0 0 0 2px white, 0 0 0 3px black;
-  }
+.form_wrapper h2 {
+	font-size: 1.5em;
+	line-height: 1.5em;
+	margin: 0;
+}
 
-  .form{
-    text-align: center;
-    align-items: center;
-  }
+.form_wrapper h3 {
+	font-size	:	1.1em;
+	font-weight	:	normal;
+	line-height	:	1.5em;
+	margin		:	0;
+}
 
-  .modalText {
-    color		:	black !important;
-    font-size	:	20px;
-  }
-  
-  
+.form_wrapper label {
+	font-size	:	12px;
+}
+
+.form_wrapper .col_half {
+	float	:	left;
+	width	:	50%;
+}
+
+.form_wrapper .input_field {
+	animation			:	bounce 0.6s ease-out;
+	margin-bottom		:	20px;
+	position			:	relative;
+    -webkit-animation	:	bounce 0.6s ease-out;
+}
+
+.form_wrapper .input_field span {
+	border-right	:	1px solid #cccccc;
+	color			:	#333;
+	left			:	0;
+	height			:	100%;
+	position		:	absolute;
+	text-align		:	center;
+	top				:	0;
+	width			:	30px;
+}
+
+.form_wrapper .inputSubmit {
+	background			: 	#f5ba1a;
+	border				:	none;
+	color				: 	#fff;
+	cursor				:	pointer;
+	font-size			:	1.1em;
+	height				:	35px;
+	line-height			:	35px;
+	margin-bottom		:	10px;
+	outline				:	none;
+	transition			:	all 0.30s ease-in-out;
+	width				:	100%;
+	-webkit-transition	:	all 0.30s ease-in-out;
+	-moz-transition		:	all 0.30s ease-in-out;
+	-ms-transition		:	all 0.30s ease-in-out;
+}
+
+.form_wrapper .inputText {
+    border		:	1px solid #cccccc;
+    box-sizing	:	border-box;
+	height		:	35px;
+    outline		:	none;
+	padding		:	8px 10px 9px 10px;
+	width		:	100%;
+}
+
+.form_wrapper .inputText:focus {
+    background			:	#fafafa;
+	border				: 	1px solid #85c100;
+	box-shadow			: 	0 0 2px 1px #85c100;
+	-webkit-box-shadow	:	0 0 2px 1px #85c100;
+    -moz-box-shadow		:	0 0 2px 1px #85c100;
+}
+
+.form_wrapper .inputText:hover {
+	background	:	#fafafa;
+}
+
+.form_wrapper .row {
+	margin	:	10px -15px;
+}
+
+.form_wrapper .row div {
+	box-sizing	:	border-box;
+	padding		:	0 15px;
+}
+
+.form_wrapper .title_container {
+	padding-bottom	:	15px;
+	text-align	:	center;
+}
+
+.login {
+	border		: 	1px solid #04afaa;
+	box-sizing	: 	border-box;
+	box-shadow	: 	0px 0px 12px rgba(0,0,0,.3);
+	color		:	#444;
+	margin		: 	50px auto;
+	position	: 	relative;
+	text-align	: 	center;
+	width		: 	300px;
+}
+
+.maxwidth {
+	margin		:	auto;
+	max-width	:	1100px;
+	position	:	relative;
+}
+
+.modal {
+	font-family	:	'Monserrat', sans-serif !important;
+	height		:	540px !important;
+	text-align	:	center !important;
+	width		:	400px !important;
+	z-index		:	2 !important;
+}
+
+.modalConfiguracion {
+	font-family	:	'Monserrat', sans-serif !important;
+	height		:	450px !important;
+	text-align	:	center !important;
+	width		:	400px !important;
+	z-index		:	2 !important;
+}
+
+.modalContacs {
+	font-family	:	'Monserrat', sans-serif !important;
+	height		:	440px !important;
+	text-align	:	center !important;
+	width		:	400px !important;
+}
+
+.modalEditarCirugia {
+	font-family	:	'Monserrat', sans-serif !important;
+	height		:	600px !important;
+	text-align	:	center !important;
+	width		:	600px !important;
+	z-index		:	2 !important;
+}
+
+.modalRegistro {
+	font-family	:	'Monserrat', sans-serif !important;
+	height		:	555px !important;
+	text-align	:	center !important;
+	width		:	500px !important;
+	z-index		:	auto;
+}
+
+.modalRegistro ::-webkit-scrollbar {
+	/* display	:	none !important; */
+}
+
+.modalRequerimientos {
+	font-family	:	'Monserrat', sans-serif !important;
+	height		:	520px !important;
+	text-align	:	center !important;
+	width		:	400px !important;
+	z-index		:	2 !important;
+}
+
+.modalTitle {
+	color		:	#0582a9;
+	font-size	:	30px;
+}
+
+.seccionCabeceraLogin {
+	background-color	: 	white;
+	left				: 	0;
+	position			: 	fixed;
+	right				: 	0;
+	text-align			: 	center;
+	top					: 	0;
+	width				: 	100%;
+	z-index				: 	1;
+	z-index				: 	2;
+}
+
+.select_option {
+	position	:	relative;
+  	width		:	100%;
+}
+
+.select_option select {
+	appearance			: 	none;
+	background			: 	#fff;
+	border				: 	1px solid #cccccc;
+    border-radius		: 	0;
+	color				: 	#7b7b7b;
+	cursor				: 	pointer;
+	display				: 	inline-block;
+    height				: 	35px;
+    padding				: 	0px 10px;
+    transition			: 	all 0.2s ease;
+	width				: 	100%;
+	-webkit-appearance	: 	none;
+    -moz-appearance		: 	none;
+}
+
+.select_option select:focus {
+	background		: 	#fafafa;
+    border-color	:	#000000;
+	color			:	#000000;
+    outline			: 	none;
+}
+
+.select_option select:hover {
+	background		:	#fafafa;
+	border-color	:	#000000;
+	color			:	#000000;
+    outline			:	none;
+}
+
+.show {
+	right	:	5px;
+}
