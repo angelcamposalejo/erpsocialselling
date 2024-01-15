@@ -9,7 +9,7 @@ import { IoIosWarning } from "react-icons/io";
 import { GrStatusGood } from "react-icons/gr";
 
 
-const PedidoCard = ({ compra, setItemSeleccionado, setOpcionSeleccionada }) => {
+const VentaCard = ({ compra, setItemSeleccionado, setOpcionSeleccionada }) => {
 
     const [fechaActual, setFechaActual] = useState("")
 
@@ -152,7 +152,7 @@ const PedidoCard = ({ compra, setItemSeleccionado, setOpcionSeleccionada }) => {
                             const responseInventario = await updatePedido(objeto.id)
                     
                             if(responseInventario === "success"){//Registro de evento exitoso
-                                const responsePedido = await createVenta(objeto.producto,objeto.cantidadPedido,objeto.precioVenta,objeto.entregar,objeto.fechaEntrega,objeto.horaEntrega,objeto.lugarEntrega)
+                                const responsePedido = await createVenta(objeto,objeto.cantidadPedido,objeto.precioVenta,objeto.entregar,objeto.fechaEntrega,objeto.horaEntrega,objeto.lugarEntrega)
                     
                                 if(responsePedido === "success"){//Registro de evento exitoso
                                     const responseCaja = await createCaja("Venta",objeto.fechaEntrega,objeto.precioVenta)
@@ -203,15 +203,12 @@ const PedidoCard = ({ compra, setItemSeleccionado, setOpcionSeleccionada }) => {
             <img src={process.env.PUBLIC_URL + "/imagenes/" + "uno.jpg"} alt="bandera" className="productoImagen"/>
             <h1 className='itemblogTitle'>{compra.producto.tipoProducto}</h1>
             <h1 className='itemblogTitle'>{compra.producto.descripcion}</h1> 
-            <h1 className='itemblogTitle'>{"Cant. "+ compra.cantidadPedido + " P/U $" + compra.precioVenta}</h1>
+            <h1 className='itemblogTitle'>{"Cant. "+ compra.cantidad + " P/U $" + compra.precioVenta}</h1>
             <h1 className='itemblogTitle'>{"Entregar a: "+compra.entregar}</h1>
             <h1 className='itemblogTitle'>{"Lugar : "+compra.lugarEntrega}</h1>
-            <h1 className='itemblogTitle'>{compra.fechaEntrega +" " + compra.horaEntrega}</h1>
-            <br />
-            {/* <span className='itemblogPedido' onClick={handlePedidoClick(compra)}><IoIosWarning /> Apartar</span>  */}
-            <span className='itemblogEntrega' onClick={handleVentaClick(compra)}><GrStatusGood /> Entregar</span>      
+            <h1 className='itemblogTitle'>{compra.fechaEntrega +" " + compra.horaEntrega}</h1>     
         </div>
     )
 }
 
-export default PedidoCard
+export default VentaCard

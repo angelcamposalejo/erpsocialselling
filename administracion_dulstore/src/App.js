@@ -13,6 +13,7 @@ import Compras from './Components/Compras/Compras';
 import Existencias from './Components/Existencias/Existencias';
 import Menu from './Components/Menu';
 import Pedidos from './Components/Pedidos/Pedidos';
+import Ventas from './Components/Ventas/Ventas';
 
 const App = () => {
 
@@ -22,6 +23,7 @@ const App = () => {
   const [isCompras, setIsCompras] = useState(false)
   const [isExistencias, setIsExistencias] = useState(true)
   const [isPedido, setIsPedido] = useState(false)
+  const [isVentas, setIsVentas] =useState(false)
   
 
   useEffect(()=>{
@@ -70,7 +72,8 @@ const App = () => {
   return(
     <div className="App">
       <Menu setIsCompras={setIsCompras} isCompras={isCompras} setIsExistencias={setIsExistencias} isExistencias={isExistencias}
-      setIsCaja={setIsCaja} isCaja={isCaja} balance={balance} setIsPedido={setIsPedido} isPedido={isPedido}/>
+      setIsCaja={setIsCaja} isCaja={isCaja} balance={balance} setIsPedido={setIsPedido} isPedido={isPedido}
+      setIsVentas={setIsVentas} isVentas={isVentas}/>
       <div className='cuerpoPacientes'>
         <section className='seccion_pacientes_pendientes'>
           <div className='itemservespCont'>
@@ -91,7 +94,11 @@ const App = () => {
                             ?
                               <Pedidos />
                             :
-                              null
+                              isVentas
+                                ?
+                                  <Ventas />
+                                :
+                                  null
 
             }
           </div>
