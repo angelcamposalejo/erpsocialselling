@@ -15,7 +15,7 @@
 }
 
 .opc_menu {
-	border-color	: 	gray;
+	border-color	: 	black;
 	border-style	: 	solid;
   	border-width	: 	1px;
 	color			: 	white !important;
@@ -50,7 +50,7 @@
 	background-color	: 	black;
 	color				: 	white !important;
 	font-weight			: 	bold;
-	border-color		: 	gray;
+	border-color		: 	black;
   	border-width		: 	1px;
   	border-style		: 	solid;
 }

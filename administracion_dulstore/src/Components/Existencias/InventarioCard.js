@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Swal from "sweetalert2"
 import { updateInventario } from "../../CRUD/inventario";
 import { createPedido } from "../../CRUD/pedido";
@@ -217,13 +217,14 @@ const InventarioCard = ({ compra, setItemSeleccionado, setOpcionSeleccionada }) 
                         let lugarEntrega = document.getElementById('inputLugar').value
                         let cantidadRestante = item.cantidad - cantidadPedido
 
-
+                        console.log(item)
                         solicitarPedido(item)
                         async function solicitarPedido(objeto){
                             const responseInventario = await updateInventario(objeto.id,cantidadRestante)
                     
                             if(responseInventario === "success"){//Registro de evento exitoso
-                                const responsePedido = await createVenta(objeto,cantidadPedido,precioVenta,entregar,fechaEntrega,horaEntrega,lugarEntrega)
+                                let utilidad = precioVenta - item.costo
+                                const responsePedido = await createVenta(objeto,cantidadPedido,precioVenta,entregar,fechaEntrega,horaEntrega,lugarEntrega,utilidad)
                     
                                 if(responsePedido === "success"){//Registro de evento exitoso
                                     const responseCaja = await createCaja("Venta",fechaEntrega,precioVenta)

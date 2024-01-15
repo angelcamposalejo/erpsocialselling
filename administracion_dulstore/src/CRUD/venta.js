@@ -1,7 +1,7 @@
 import { inventarioStore } from "../config";
 
 export const createVenta = async (compra,cantidadPedido,precioVenta,entregar,fechaEntrega,
-    horaEntrega,lugarEntrega) => {
+    horaEntrega,lugarEntrega,utilidad) => {
     try {
         inventarioStore
             .collection("ventas")
@@ -12,7 +12,8 @@ export const createVenta = async (compra,cantidadPedido,precioVenta,entregar,fec
                 'entregar'             :   entregar,
                 'fechaEntrega'           :   fechaEntrega,
                 'horaEntrega' : horaEntrega,
-                'lugarEntrega' : lugarEntrega
+                'lugarEntrega' : lugarEntrega,
+                'utilidad' : utilidad
             })
         return "success"
     } catch (error) {
