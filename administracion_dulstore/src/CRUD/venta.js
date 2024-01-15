@@ -1,13 +1,13 @@
 import { inventarioStore } from "../config";
 
-export const createPedido = async (compra,cantidadPedido,precioVenta,entregar,fechaEntrega,
+export const createVenta = async (compra,cantidadPedido,precioVenta,entregar,fechaEntrega,
     horaEntrega,lugarEntrega) => {
     try {
         inventarioStore
-            .collection("pedidos")
+            .collection("ventas")
             .add({
                 'producto'          :   compra,
-                'cantidadPedido'           :   cantidadPedido,
+                'cantidad'           :   cantidadPedido,
                 'precioVenta'              :   precioVenta,
                 'entregar'             :   entregar,
                 'fechaEntrega'           :   fechaEntrega,
@@ -18,18 +18,4 @@ export const createPedido = async (compra,cantidadPedido,precioVenta,entregar,fe
     } catch (error) {
         return error
     }
-}
-
-export const updatePedido = async (id) => {
-    try {
-        await inventarioStore
-        .collection("pedidos")
-        .doc(id)
-        .update({
-            'entregado' : true
-        })
-        return "success"
-      } catch (error) {
-        return error
-      }
 }

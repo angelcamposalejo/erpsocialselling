@@ -10,16 +10,19 @@ import { inventarioStore } from './config';
 
 import Caja from './Components/Caja/Caja';
 import Compras from './Components/Compras/Compras';
-import Menu from './Components/Menu';
 import Existencias from './Components/Existencias/Existencias';
+import Menu from './Components/Menu';
+import Pedidos from './Components/Pedidos/Pedidos';
 
 const App = () => {
 
+  const [balance, setBalance] = useState(0)
   const [cajaList, setCajaList] = useState([])
   const [isCaja, setIsCaja] = useState(false)
   const [isCompras, setIsCompras] = useState(false)
   const [isExistencias, setIsExistencias] = useState(true)
-  const [balance, setBalance] = useState(0)
+  const [isPedido, setIsPedido] = useState(false)
+  
 
   useEffect(()=>{
     inventarioStore.collection("caja").orderBy("fecha", "desc")
@@ -44,7 +47,7 @@ const App = () => {
             salidas = salidas + parseFloat(cajaList[i].cantidad)
           }
           else{
-            if(cajaList[i].concepto === "Testing" || cajaList[i].concepto === "Inversion"){
+            if(cajaList[i].concepto === "Testing" || cajaList[i].concepto === "Inversion" || cajaList[i].concepto === "Venta"){
               entradas = entradas + parseFloat(cajaList[i].cantidad)
             }
             else{
@@ -67,7 +70,7 @@ const App = () => {
   return(
     <div className="App">
       <Menu setIsCompras={setIsCompras} isCompras={isCompras} setIsExistencias={setIsExistencias} isExistencias={isExistencias}
-      setIsCaja={setIsCaja} isCaja={isCaja} balance={balance}/>
+      setIsCaja={setIsCaja} isCaja={isCaja} balance={balance} setIsPedido={setIsPedido} isPedido={isPedido}/>
       <div className='cuerpoPacientes'>
         <section className='seccion_pacientes_pendientes'>
           <div className='itemservespCont'>
@@ -84,7 +87,11 @@ const App = () => {
                         ?
                           <Caja cajaList={cajaList}/>
                         :
-                          null
+                          isPedido
+                            ?
+                              <Pedidos />
+                            :
+                              null
 
             }
           </div>

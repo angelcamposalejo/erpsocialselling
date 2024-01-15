@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2"
 import { inventarioStore } from "../../config";
-import InventarioCard from "./InventarioCard";
+import PedidoCard from "./PedidoCard";
 
-const Existencias = () => {
+const Pedidos = () => {
 
     const [isEdit,setIsEdit] = useState(false)
     const [inventarioList, setInventarioList] = useState([])
@@ -11,12 +11,12 @@ const Existencias = () => {
     const [opcionSeleccionada, setOpcionSeleccionada] = useState("0")
 
     useEffect(()=>{
-        inventarioStore.collection("inventario").orderBy("fechaCompra", "desc")
+        inventarioStore.collection("pedidos").orderBy("fechaEntrega", "desc")
         .onSnapshot(snap => {
             const inventario = []
             snap.forEach(doc => {
                 let producto = doc.data()
-                if(parseInt(producto.cantidad) > 0){
+                if(!producto.entregado){
                     inventario.push({ id: doc.id, ...doc.data() })
                 }
             })
@@ -47,7 +47,7 @@ const Existencias = () => {
                                 <div className='itemservespCont'>
                                     {
                                         inventarioList.map(compra => 
-                                            <InventarioCard compra={compra}key={compra.id} setItemSeleccionado={setItemSeleccionado}
+                                            <PedidoCard compra={compra}key={compra.id} setItemSeleccionado={setItemSeleccionado}
                                             setOpcionSeleccionada={setOpcionSeleccionada}/>
                                         )
                                     }
@@ -60,4 +60,4 @@ const Existencias = () => {
     )
 }
 
-export default Existencias
+export default Pedidos

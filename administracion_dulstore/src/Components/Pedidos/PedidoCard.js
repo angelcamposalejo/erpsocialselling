@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2"
 import { updateInventario } from "../../CRUD/inventario";
+import { updatePedido } from "../../CRUD/pedido";
 import { createPedido } from "../../CRUD/pedido";
 import { createVenta } from "../../CRUD/venta";
 import { createCaja } from "../../CRUD/caja";
@@ -8,7 +9,7 @@ import { IoIosWarning } from "react-icons/io";
 import { GrStatusGood } from "react-icons/gr";
 
 
-const InventarioCard = ({ compra, setItemSeleccionado, setOpcionSeleccionada }) => {
+const PedidoCard = ({ compra, setItemSeleccionado, setOpcionSeleccionada }) => {
 
     const [fechaActual, setFechaActual] = useState("")
 
@@ -91,7 +92,7 @@ const InventarioCard = ({ compra, setItemSeleccionado, setOpcionSeleccionada }) 
 
                         solicitarPedido(item)
                         async function solicitarPedido(objeto){
-                            const responseInventario = await updateInventario(objeto.id,cantidadRestante)
+                            const responseInventario = await updatePedido(objeto.id,cantidadRestante)
                     
                             if(responseInventario === "success"){//Registro de evento exitoso
                                 const responsePedido = await createPedido(objeto,cantidadPedido,precioVenta,entregar,fechaEntrega,horaEntrega,lugarEntrega)
@@ -145,88 +146,16 @@ const InventarioCard = ({ compra, setItemSeleccionado, setOpcionSeleccionada }) 
         event.preventDefault()
         setItemSeleccionado(item)
         setOpcionSeleccionada(1)
-        Swal.fire({
-            customClass:'modalRegistro',
-            html:`<div class="form_wrapper">
-                <div class="form_container">
-                    <div class="row clearfix">
-                        <div class="">
-                            <form autocomplete="off" method="post">
-                                <div class="input_field">
-                                    <p>Cantidad</p>
-                                    <input type="text" name="inputCedula" id="inputCedula" 
-                                    placeholder="Ingrese la cantidad del pedido" required class="inputText" autocomplete="off" 
-                                    value="`+item.cantidad+`" />
-                                </div>
-                                <div class="input_field">
-                                    <p>Precio de venta</p>
-                                    <input type="text" name="inputVenta" id="inputVenta" 
-                                    placeholder="Ingrese el precio de venta" required class="inputText" autocomplete="off" 
-                                    value="" />
-                                </div>
-                                <div class="input_field">
-                                    <p>A quien se entrego?</p>
-                                    <input type="text" name="inputPidio" id="inputPidio" 
-                                    placeholder="Ingrese el nombre de quien se realiza la venta" required class="inputText" autocomplete="off" 
-                                    value=""/>
-                                </div>
-                                <div class="input_field">
-                                    <p>Fecha de entrega</p>
-                                    <input type="date" name="inputNombre" id="inputNombre" 
-                                    placeholder="Ingrese el nombre del usuario" required  class="inputText" autocomplete="off" 
-                                    value="`+fechaActual+`" 
-                                    />
-                                </div>
-                                <div class="input_field">
-                                    <p>Hora de entrega</p>
-                                    <input type="text" name="inputHora" id="inputHora" 
-                                    placeholder="Ingrese la hora de entrega" required class="inputText" autocomplete="off" 
-                                    value=""/>
-                                </div>
-                                <div class="input_field">
-                                    <p>Lugar de entrega</p>
-                                    <input type="text" name="inputLugar" id="inputLugar" 
-                                    placeholder="Ingrese la hora de entrega" required class="inputText" autocomplete="off" 
-                                    value=""/>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>`,
-            showCancelButton: true,
-            denyButtonText: "Eliminar",
-            cancelButtonText: "Cancelar",
-            denyButtonColor: "red",
-            cancelButtonColor: "grey",
-            confirmButtonText: "Actualizar",
-            confirmButtonColor: "#04afaa",
-            scrollbarPadding:false,
-            width:'500px',
-            heightAuto: false,
-            focusConfirm: false,
-            showCloseButton:true,
-            preConfirm: () => {
-                if (document.getElementById('inputNombre').value) {//Se verifica que se haya proporcionado un nombre de usuario valido
-                    if (document.getElementById('inputCedula').value) {//Se verifica que se haya proporcionado un nombre de usuario valido
-                        let cantidadPedido = document.getElementById('inputCedula').value
-                        let precioVenta = document.getElementById('inputVenta').value
-                        let entregar = document.getElementById('inputPidio').value
-                        let fechaEntrega = document.getElementById('inputNombre').value
-                        let horaEntrega = document.getElementById('inputHora').value
-                        let lugarEntrega = document.getElementById('inputLugar').value
-                        let cantidadRestante = item.cantidad - cantidadPedido
-
-
-                        solicitarPedido(item)
+        console.log(item)
+        solicitarPedido(item)
                         async function solicitarPedido(objeto){
-                            const responseInventario = await updateInventario(objeto.id,cantidadRestante)
+                            const responseInventario = await updatePedido(objeto.id)
                     
                             if(responseInventario === "success"){//Registro de evento exitoso
-                                const responsePedido = await createVenta(objeto,cantidadPedido,precioVenta,entregar,fechaEntrega,horaEntrega,lugarEntrega)
+                                const responsePedido = await createVenta(objeto,objeto.cantidadPedido,objeto.precioVenta,objeto.entregar,objeto.fechaEntrega,objeto.horaEntrega,objeto.lugarEntrega)
                     
                                 if(responsePedido === "success"){//Registro de evento exitoso
-                                    const responseCaja = await createCaja("Venta",fechaEntrega,precioVenta)
+                                    const responseCaja = await createCaja("Venta",objeto.fechaEntrega,objeto.precioVenta)
                                     if(responseCaja === "success"){//Registro de evento exitoso
                                         Swal.fire({
                                             icon: 'success',
@@ -266,33 +195,23 @@ const InventarioCard = ({ compra, setItemSeleccionado, setOpcionSeleccionada }) 
                                   })
                             }
                         }
-                        
-                    } else {//Nombre de usuario invalido
-                        Swal.showValidationMessage('Proporcione la fecha en que se realizo el mantenimiento')   
-                    }
-                } else {//Nombre de usuario invalido
-                    Swal.showValidationMessage('Proporcione la fecha en que se realizo el mantenimiento')   
-                }
-            }
-        }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
-            console.log("Aqui")
-        })
+        alert("hola")
     }
 
     return(
         <div className={"itemblog"}>
             <img src={process.env.PUBLIC_URL + "/imagenes/" + "uno.jpg"} alt="bandera" className="productoImagen"/>
-            <h1 className='itemblogTitle'>{compra.tipoProducto}</h1>
-            <h1 className='itemblogTitle'>{compra.descripcion}</h1> 
-            <h1 className='itemblogTitle'>{"Cant. "+ compra.cantidad + " P/U $" + compra.precioUnitarioCompra}</h1>
-            <h1 className='itemblogTitle'>{compra.proveedor}</h1>
-            <h1 className='itemblogTitle'>{compra.fechaCompra}</h1>
+            <h1 className='itemblogTitle'>{compra.producto.tipoProducto}</h1>
+            <h1 className='itemblogTitle'>{compra.producto.descripcion}</h1> 
+            <h1 className='itemblogTitle'>{"Cant. "+ compra.cantidadPedido + " P/U $" + compra.precioVenta}</h1>
+            <h1 className='itemblogTitle'>{"Entregar a: "+compra.entregar}</h1>
+            <h1 className='itemblogTitle'>{"Lugar : "+compra.lugarEntrega}</h1>
+            <h1 className='itemblogTitle'>{compra.fechaEntrega +" " + compra.horaEntrega}</h1>
             <br />
-            <span className='itemblogPedido' onClick={handlePedidoClick(compra)}><IoIosWarning /> Apartar</span> 
+            {/* <span className='itemblogPedido' onClick={handlePedidoClick(compra)}><IoIosWarning /> Apartar</span>  */}
             <span className='itemblogEntrega' onClick={handleVentaClick(compra)}><GrStatusGood /> Entregar</span>      
         </div>
     )
 }
 
-export default InventarioCard
+export default PedidoCard
