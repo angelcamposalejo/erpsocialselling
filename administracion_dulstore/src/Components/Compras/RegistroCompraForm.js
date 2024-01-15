@@ -124,9 +124,9 @@ const RegistroCompraForm = ({setIsRegistro}) => {
     }
 
     return(
-        <div className="form">
+        <div className="itemblogForm">
             <div className="content-select">
-                <h3 className="modalText">Tipo de Producto</h3>
+                <h3 className="itemblogTitle">Tipo de Producto</h3>
             </div>
             <div className="content-select">
                 <select value={tipoProducto} onChange={(e)=>handleTipoProductoChange(e.target.value)}>
@@ -137,7 +137,7 @@ const RegistroCompraForm = ({setIsRegistro}) => {
                 <i></i>
             </div>
             <div className="content-select">
-                <h3 className="modalText">Descripcion</h3>
+                <h3 className="itemblogTitle">Descripcion</h3>
             </div>
             <div className="content-select">
                 <textarea
@@ -150,7 +150,7 @@ const RegistroCompraForm = ({setIsRegistro}) => {
                 />
             </div>
             <div className="content-select">
-                <h3 className="modalText">Cantidad</h3>
+                <h3 className="itemblogTitle">Cantidad</h3>
             </div>
             <div className="content-select">
                 <input 
@@ -163,7 +163,7 @@ const RegistroCompraForm = ({setIsRegistro}) => {
                     placeholder="Cantidad comprada"/>
             </div>
             <div className="content-select">
-                <h3 className="modalText">Precio Unitario de Compra</h3>
+                <h3 className="itemblogTitle">Precio Unitario de Compra</h3>
             </div>
             <div className="content-select">
                 <input 
@@ -176,7 +176,7 @@ const RegistroCompraForm = ({setIsRegistro}) => {
                     placeholder="Precio unitario de la compra"/>
             </div>
             <div className="content-select">
-                <h3 className="modalText">Costo Unitario de Compra</h3>
+                <h3 className="itemblogTitle">Costo Unitario de Compra</h3>
             </div>
             <div className="content-select">
                 <input 
@@ -189,7 +189,7 @@ const RegistroCompraForm = ({setIsRegistro}) => {
                     placeholder="Costo unitario de la compra"/>
             </div>
             <div className="content-select">
-                <h3 className="modalText">Proveedor</h3>
+                <h3 className="itemblogTitle">Proveedor</h3>
             </div>
             <div className="content-select">
                 <input 
@@ -202,7 +202,7 @@ const RegistroCompraForm = ({setIsRegistro}) => {
                     placeholder="Proveedor"/>
             </div>
             <div className="content-select">
-                <h3 className="modalText">Fecha de la compra</h3>
+                <h3 className="itemblogTitle">Fecha de la compra</h3>
             </div>
             <div className="content-select">
                 <input 

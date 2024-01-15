@@ -28,6 +28,17 @@
 	vertical-align	:	top;
 }
 
+.opc_saldo {
+	color			: 	white !important;
+	cursor			: 	pointer;
+    display			: 	inline-block;
+	font-family		: 	'Monserrat', sans-serif;
+    font-size		: 	24px;
+	margin			: 	5px 0 0 0;
+	padding			: 	5px 10px;
+	vertical-align	:	top;
+}
+
 .opc_menuSeleccionada {
     display				: 	inline-block;
     vertical-align		:	top;
