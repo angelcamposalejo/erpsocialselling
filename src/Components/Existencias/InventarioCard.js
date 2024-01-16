@@ -14,6 +14,7 @@ const InventarioCard = ({ compra, setItemSeleccionado, setOpcionSeleccionada }) 
 
     const handlePedidoClick = (item) => (event) => {
         event.preventDefault()
+        console.log(item)
         setItemSeleccionado(item)
         setOpcionSeleccionada(1)
         Swal.fire({
@@ -283,7 +284,7 @@ const InventarioCard = ({ compra, setItemSeleccionado, setOpcionSeleccionada }) 
 
     return(
         <div className={"itemblog"}>
-            <img src={process.env.PUBLIC_URL + "/imagenes/" + "uno.jpg"} alt="bandera" className="productoImagen"/>
+            <img src={process.env.PUBLIC_URL + "/imagenes/" + compra.id + ".jpeg"} alt="bandera" className="productoImagen"/>
             <h1 className='itemblogTitle'>{compra.tipoProducto}</h1>
             <h1 className='itemblogTitle'>{compra.descripcion}</h1> 
             <h1 className='itemblogTitle'>{"Cant. "+ compra.cantidad + " P/U $" + compra.precioUnitarioCompra}</h1>

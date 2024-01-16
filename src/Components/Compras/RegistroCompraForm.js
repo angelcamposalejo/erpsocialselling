@@ -7,7 +7,7 @@ import { createCaja } from "../../CRUD/caja";
 const RegistroCompraForm = ({setIsRegistro}) => {
 
     const [cantidad, setCantidad] = useState("")
-    const [costoUnitarioCompra, setCostoUnitarioCompra] = useState("")
+    // const [costoUnitarioCompra, setCostoUnitarioCompra] = useState("0")
     const [descripcion, setDescripcion] = useState("")
     const [fechaCompra, setFechacompra] = useState("")
     const [precioUnitarioCompra, setPrecioUnitarioCompra] = useState("")
@@ -21,7 +21,7 @@ const RegistroCompraForm = ({setIsRegistro}) => {
 
     const handleRegistrarClick = () => (event) => {
         event.preventDefault()
-        let costo = parseFloat(costoUnitarioCompra) + parseFloat(precioUnitarioCompra)
+        let costo = parseFloat(0) + parseFloat(precioUnitarioCompra)
         let gasto = parseFloat(precioUnitarioCompra) * parseInt(cantidad)
         
         let tipo = "Ropa"
@@ -34,7 +34,7 @@ const RegistroCompraForm = ({setIsRegistro}) => {
             'descripcion'           :   descripcion,
             'cantidad'              :   cantidad,
             'precioUnitarioCompra'  :   precioUnitarioCompra,
-            'costoUnitarioCompra'   :   costoUnitarioCompra,
+            'costoUnitarioCompra'   :   0,
             'costo'                 :   costo,
             'gasto'                :   gasto,
             'proveedor'             :   proveedor,
@@ -57,10 +57,6 @@ const RegistroCompraForm = ({setIsRegistro}) => {
 
     const onChangeDescripcion = (texto) => {
         setDescripcion(texto.target.value.toString().toUpperCase())
-    };
-
-    const onChangeCostoCompra = (texto) => {
-        setCostoUnitarioCompra(texto.target.value.toString().toUpperCase())
     };
 
     const onChangePrecioCompra = (texto) => {
@@ -92,7 +88,6 @@ const RegistroCompraForm = ({setIsRegistro}) => {
                             setDescripcion("")
                             setCantidad("")
                             setPrecioUnitarioCompra("")
-                            setCostoUnitarioCompra("")
                             setProveedor("")
 
                         }
@@ -174,19 +169,6 @@ const RegistroCompraForm = ({setIsRegistro}) => {
                     value={precioUnitarioCompra}
                     onChange={onChangePrecioCompra}
                     placeholder="Precio unitario de la compra"/>
-            </div>
-            <div className="content-select">
-                <h3 className="itemblogTitle">Costo Unitario de Compra</h3>
-            </div>
-            <div className="content-select">
-                <input 
-                    type={"text"} 
-                    id="costoUnitarioCompra" 
-                    name="costoUnitarioCompra" 
-                    className="datos"
-                    value={costoUnitarioCompra}
-                    onChange={onChangeCostoCompra}
-                    placeholder="Costo unitario de la compra"/>
             </div>
             <div className="content-select">
                 <h3 className="itemblogTitle">Proveedor</h3>

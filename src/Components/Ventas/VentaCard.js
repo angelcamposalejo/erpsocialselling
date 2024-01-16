@@ -5,7 +5,7 @@ const VentaCard = ({ compra, setItemSeleccionado, setOpcionSeleccionada }) => {
 
     return(
         <div className={"itemblog"}>
-            <img src={process.env.PUBLIC_URL + "/imagenes/" + "uno.jpg"} alt="bandera" className="productoImagen"/>
+            <img src={process.env.PUBLIC_URL + "/imagenes/" + compra.producto.id + ".jpeg"} alt="bandera" className="productoImagen"/>
             <h1 className='itemblogTitle'>{compra.producto.tipoProducto}</h1>
             <h1 className='itemblogTitle'>{compra.producto.descripcion}</h1> 
             <h1 className='itemblogTitle'>{"Cant. "+ compra.cantidad + " P/U $" + compra.precioVenta}</h1>
