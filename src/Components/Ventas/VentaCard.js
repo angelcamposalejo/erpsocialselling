@@ -1,7 +1,7 @@
 import React from "react";
 
 
-const VentaCard = ({ compra, setItemSeleccionado, setOpcionSeleccionada }) => {
+const VentaCard = ({ compra }) => {
 
     return(
         <div className={"itemblog"}>

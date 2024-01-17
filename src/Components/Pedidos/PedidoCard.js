@@ -6,12 +6,10 @@ import { createCaja } from "../../CRUD/caja";
 import { GrStatusGood } from "react-icons/gr";
 
 
-const PedidoCard = ({ compra, setItemSeleccionado, setOpcionSeleccionada }) => {
+const PedidoCard = ({ compra }) => {
 
     const handleVentaClick = (item) => (event) => {
         event.preventDefault()
-        setItemSeleccionado(item)
-        setOpcionSeleccionada(1)
         console.log(item)
         solicitarPedido(item)
                         async function solicitarPedido(objeto){
@@ -62,7 +60,6 @@ const PedidoCard = ({ compra, setItemSeleccionado, setOpcionSeleccionada }) => {
                                   })
                             }
                         }
-        alert("hola")
     }
 
     return(

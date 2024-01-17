@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2"
 import { createCompra } from "../../CRUD/compras";
 import { createInventario } from "../../CRUD/inventario";
@@ -13,6 +13,11 @@ const RegistroCompraForm = ({setIsRegistro}) => {
     const [precioUnitarioCompra, setPrecioUnitarioCompra] = useState("")
     const [proveedor, setProveedor] = useState("")
     const [tipoProducto, setTipoProducto] = useState("")
+
+    useEffect(()=>{
+        let today = new Date()
+        setFechacompra(today.getFullYear()+"-"+(today.getMonth()+1).toString().padStart(2,"0")+"-"+today.getDate().toString().padStart(2,"0"))
+    },[])
 
     const handleCancelarClick = () => (event) => {
         event.preventDefault()

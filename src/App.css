@@ -268,3 +268,10 @@ form {
 .show {
 	right	:	5px;
 }
+
+.contenedorEncabezado {
+	color: black;
+	font-size: 30px;
+	font-weight: bold;
+	margin-bottom: 15px;
+}

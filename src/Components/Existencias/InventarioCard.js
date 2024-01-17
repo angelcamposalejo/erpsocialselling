@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2"
 import { updateInventario } from "../../CRUD/inventario";
 import { createPedido } from "../../CRUD/pedido";
@@ -8,15 +8,18 @@ import { IoIosWarning } from "react-icons/io";
 import { GrStatusGood } from "react-icons/gr";
 
 
-const InventarioCard = ({ compra, setItemSeleccionado, setOpcionSeleccionada }) => {
+const InventarioCard = ({ compra }) => {
 
     const [fechaActual, setFechaActual] = useState("")
+
+    useEffect(()=>{
+        let today = new Date()
+        setFechaActual(today.getFullYear()+"-"+(today.getMonth()+1).toString().padStart(2,"0")+"-"+today.getDate().toString().padStart(2,"0"))
+    },[])
 
     const handlePedidoClick = (item) => (event) => {
         event.preventDefault()
         console.log(item)
-        setItemSeleccionado(item)
-        setOpcionSeleccionada(1)
         Swal.fire({
             customClass:'modalRegistro',
             html:`<div class="form_wrapper">
@@ -144,8 +147,6 @@ const InventarioCard = ({ compra, setItemSeleccionado, setOpcionSeleccionada }) 
 
     const handleVentaClick = (item) => (event) => {
         event.preventDefault()
-        setItemSeleccionado(item)
-        setOpcionSeleccionada(1)
         Swal.fire({
             customClass:'modalRegistro',
             html:`<div class="form_wrapper">

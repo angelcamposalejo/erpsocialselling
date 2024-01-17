@@ -19,6 +19,8 @@ const App = () => {
 
   const [balance, setBalance] = useState(0)
   const [cajaList, setCajaList] = useState([])
+  const [cantidadExistencias, setCantidadExistencias] = useState(0)
+  const [cantidadPedidos, setCantidadPedidos] = useState(0)
   const [isCaja, setIsCaja] = useState(false)
   const [isCompras, setIsCompras] = useState(false)
   const [isExistencias, setIsExistencias] = useState(true)
@@ -73,7 +75,8 @@ const App = () => {
     <div className="App">
       <Menu setIsCompras={setIsCompras} isCompras={isCompras} setIsExistencias={setIsExistencias} isExistencias={isExistencias}
       setIsCaja={setIsCaja} isCaja={isCaja} balance={balance} setIsPedido={setIsPedido} isPedido={isPedido}
-      setIsVentas={setIsVentas} isVentas={isVentas}/>
+      setIsVentas={setIsVentas} isVentas={isVentas}
+      cantidadExistencias={cantidadExistencias} cantidadPedidos={cantidadPedidos}/>
       <div className='cuerpoPacientes'>
         <section className='seccion_pacientes_pendientes'>
           <div className='itemservespCont'>
@@ -84,7 +87,7 @@ const App = () => {
                 :
                   isExistencias
                     ?
-                      <Existencias />
+                      <Existencias cantidadExistencias={cantidadExistencias} setCantidadExistencias={setCantidadExistencias}/>
                     :
                       isCaja
                         ?
@@ -92,7 +95,7 @@ const App = () => {
                         :
                           isPedido
                             ?
-                              <Pedidos />
+                              <Pedidos cantidadPedidos={cantidadPedidos} setCantidadPedidos={setCantidadPedidos}/>
                             :
                               isVentas
                                 ?

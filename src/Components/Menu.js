@@ -10,7 +10,8 @@ const Menu = ({ setIsCompras, isCompras,
     setIsCaja, isCaja,
     balance,
     setIsPedido, isPedido,
-    setIsVentas, isVentas }) => {
+    setIsVentas, isVentas,
+    cantidadExistencias, cantidadPedidos }) => {
 
     const handleMenuClick = (opcion) => (event) => {
         event.preventDefault()
@@ -69,51 +70,51 @@ const Menu = ({ setIsCompras, isCompras,
                         isCompras 
                             ?
                                 <>
-                                    <div className='opc_menu' onClick={handleMenuClick(1)} style={{ color: 'black' }}><GiShop /> Existencias</div>
-                                    <div className='opc_menu' onClick={handleMenuClick(2)} style={{ color: 'black' }}><FaShippingFast /> Pedidos</div>
-                                    <div className='opc_menuSeleccionada' onClick={handleMenuClick(3)} style={{ color: 'black' }}><GiBuyCard /> Compras</div>
-                                    <div className='opc_menu' onClick={handleMenuClick(4)} style={{ color: 'black' }}><TbShoppingCartDollar /> Ventas</div>
-                                    <div className='opc_menu' onClick={handleMenuClick(5)} style={{ color: 'black' }}><FaMoneyBillTransfer /> Caja</div>
+                                    <div className='opc_menu' onClick={handleMenuClick(1)} style={{ color: 'black' }}> <GiShop />({cantidadExistencias})</div>
+                                    <div className='opc_menu' onClick={handleMenuClick(2)} style={{ color: 'black' }}> <FaShippingFast />({cantidadPedidos})</div>
+                                    <div className='opc_menuSeleccionada' onClick={handleMenuClick(3)} style={{ color: 'black' }}> <GiBuyCard /> </div>
+                                    <div className='opc_menu' onClick={handleMenuClick(4)} style={{ color: 'black' }}> <TbShoppingCartDollar /> </div>
+                                    <div className='opc_menu' onClick={handleMenuClick(5)} style={{ color: 'black' }}> <FaMoneyBillTransfer /> </div>
                                 </>
                             :
                                 isExistencias
                                     ?
                                         <>
-                                            <div className='opc_menuSeleccionada' onClick={handleMenuClick(1)} style={{ color: 'black' }}><GiShop /> Existencias</div>
-                                            <div className='opc_menu' onClick={handleMenuClick(2)} style={{ color: 'black' }}><FaShippingFast /> Pedidos</div>
-                                            <div className='opc_menu' onClick={handleMenuClick(3)} style={{ color: 'black' }}><GiBuyCard /> Compras</div>
-                                            <div className='opc_menu' onClick={handleMenuClick(4)} style={{ color: 'black' }}><TbShoppingCartDollar /> Ventas</div>
-                                            <div className='opc_menu' onClick={handleMenuClick(5)} style={{ color: 'black' }}><FaMoneyBillTransfer /> Caja</div>
+                                            <div className='opc_menuSeleccionada' onClick={handleMenuClick(1)} style={{ color: 'black' }}> <GiShop />({cantidadExistencias})</div>
+                                            <div className='opc_menu' onClick={handleMenuClick(2)} style={{ color: 'black' }}> <FaShippingFast />({cantidadPedidos})</div>
+                                            <div className='opc_menu' onClick={handleMenuClick(3)} style={{ color: 'black' }}> <GiBuyCard /> </div>
+                                            <div className='opc_menu' onClick={handleMenuClick(4)} style={{ color: 'black' }}> <TbShoppingCartDollar /> </div>
+                                            <div className='opc_menu' onClick={handleMenuClick(5)} style={{ color: 'black' }}> <FaMoneyBillTransfer /> </div>
                                         </>
                                     :
                                         isCaja
                                             ?
                                                 <>
-                                                    <div className='opc_menu' onClick={handleMenuClick(1)} style={{ color: 'black' }}><GiShop /> Existencias</div>
-                                                    <div className='opc_menu' onClick={handleMenuClick(2)} style={{ color: 'black' }}><FaShippingFast /> Pedidos</div>
-                                                    <div className='opc_menu' onClick={handleMenuClick(3)} style={{ color: 'black' }}><GiBuyCard /> Compras</div>
-                                                    <div className='opc_menu' onClick={handleMenuClick(4)} style={{ color: 'black' }}><TbShoppingCartDollar /> Ventas</div>
-                                                    <div className='opc_menuSeleccionada' onClick={handleMenuClick(5)} style={{ color: 'black' }}><FaMoneyBillTransfer /> Caja</div>
+                                                    <div className='opc_menu' onClick={handleMenuClick(1)} style={{ color: 'black' }}> <GiShop />({cantidadExistencias})</div>
+                                                    <div className='opc_menu' onClick={handleMenuClick(2)} style={{ color: 'black' }}> <FaShippingFast />({cantidadPedidos})</div>
+                                                    <div className='opc_menu' onClick={handleMenuClick(3)} style={{ color: 'black' }}> <GiBuyCard /> </div>
+                                                    <div className='opc_menu' onClick={handleMenuClick(4)} style={{ color: 'black' }}> <TbShoppingCartDollar /> </div>
+                                                    <div className='opc_menuSeleccionada' onClick={handleMenuClick(5)} style={{ color: 'black' }}> <FaMoneyBillTransfer /> </div>
                                                 </>
                                             :
                                                 isPedido
                                                 ?
                                                     <>
-                                                        <div className='opc_menu' onClick={handleMenuClick(1)} style={{ color: 'black' }}><GiShop /> Existencias</div>
-                                                        <div className='opc_menuSeleccionada' onClick={handleMenuClick(2)} style={{ color: 'black' }}><FaShippingFast /> Pedidos</div>
-                                                        <div className='opc_menu' onClick={handleMenuClick(3)} style={{ color: 'black' }}><GiBuyCard /> Compras</div>
-                                                        <div className='opc_menu' onClick={handleMenuClick(4)} style={{ color: 'black' }}><TbShoppingCartDollar /> Ventas</div>
-                                                        <div className='opc_menu' onClick={handleMenuClick(5)} style={{ color: 'black' }}><FaMoneyBillTransfer /> Caja</div>
+                                                        <div className='opc_menu' onClick={handleMenuClick(1)} style={{ color: 'black' }}> <GiShop />({cantidadExistencias})</div>
+                                                        <div className='opc_menuSeleccionada' onClick={handleMenuClick(2)} style={{ color: 'black' }}> <FaShippingFast />({cantidadPedidos})</div>
+                                                        <div className='opc_menu' onClick={handleMenuClick(3)} style={{ color: 'black' }}> <GiBuyCard /> </div>
+                                                        <div className='opc_menu' onClick={handleMenuClick(4)} style={{ color: 'black' }}> <TbShoppingCartDollar /> </div>
+                                                        <div className='opc_menu' onClick={handleMenuClick(5)} style={{ color: 'black' }}> <FaMoneyBillTransfer /> </div>
                                                     </>
                                                 :
                                                     isVentas
                                                     ?
                                                         <>
-                                                            <div className='opc_menu' onClick={handleMenuClick(1)} style={{ color: 'black' }}><GiShop /> Existencias</div>
-                                                            <div className='opc_menu' onClick={handleMenuClick(2)} style={{ color: 'black' }}><FaShippingFast /> Pedidos</div>
-                                                            <div className='opc_menu' onClick={handleMenuClick(3)} style={{ color: 'black' }}><GiBuyCard /> Compras</div>
-                                                            <div className='opc_menuSeleccionada' onClick={handleMenuClick(4)} style={{ color: 'black' }}><TbShoppingCartDollar /> Ventas</div>
-                                                            <div className='opc_menu' onClick={handleMenuClick(5)} style={{ color: 'black' }}><FaMoneyBillTransfer /> Caja</div>
+                                                            <div className='opc_menu' onClick={handleMenuClick(1)} style={{ color: 'black' }}> <GiShop />({cantidadExistencias})</div>
+                                                            <div className='opc_menu' onClick={handleMenuClick(2)} style={{ color: 'black' }}> <FaShippingFast />({cantidadPedidos})</div>
+                                                            <div className='opc_menu' onClick={handleMenuClick(3)} style={{ color: 'black' }}> <GiBuyCard /> </div>
+                                                            <div className='opc_menuSeleccionada' onClick={handleMenuClick(4)} style={{ color: 'black' }}> <TbShoppingCartDollar /> </div>
+                                                            <div className='opc_menu' onClick={handleMenuClick(5)} style={{ color: 'black' }}> <FaMoneyBillTransfer /> </div>
                                                         </>
                                                     :
                                                         null

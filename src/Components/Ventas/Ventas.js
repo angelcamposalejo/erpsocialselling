@@ -5,10 +5,7 @@ import VentaCard from "./VentaCard";
 
 const Ventas = () => {
 
-    const [isEdit,setIsEdit] = useState(false)
     const [inventarioList, setInventarioList] = useState([])
-    const [itemSeleccionado, setItemSeleccionado] = useState({})
-    const [opcionSeleccionada, setOpcionSeleccionada] = useState("0")
 
     useEffect(()=>{
         inventarioStore.collection("ventas").orderBy("fechaEntrega", "desc")
@@ -36,25 +33,17 @@ const Ventas = () => {
         <>
             <div className={"contenedor"} id="contenedorHoraFinal">
                 <div className="contenedorEncabezado">
-                    Existencias
+                    Ventas
                 </div>
-                {
-                    isEdit
-                        ?
-                            null
-                        :
-                            <div className={"contenedor"}>
-                                <div className='itemservespCont'>
-                                    {
-                                        inventarioList.map(compra => 
-                                            <VentaCard compra={compra}key={compra.id} setItemSeleccionado={setItemSeleccionado}
-                                            setOpcionSeleccionada={setOpcionSeleccionada}/>
-                                        )
-                                    }
-                                </div>
-                            </div>
-
-                }
+                <div className={"contenedor"}>
+                    <div className='itemservespCont'>
+                        {
+                            inventarioList.map(compra => 
+                                <VentaCard compra={compra}key={compra.id}/>
+                            )
+                        }
+                    </div>
+                </div>
             </div>
         </>
     )
