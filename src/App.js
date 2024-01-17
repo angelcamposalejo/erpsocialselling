@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Swal from "sweetalert2"
 import './App.css';
 import './Styles/Button.css'
 import './Styles/Select.css'; 
@@ -26,6 +27,8 @@ const App = () => {
   const [isExistencias, setIsExistencias] = useState(true)
   const [isPedido, setIsPedido] = useState(false)
   const [isVentas, setIsVentas] =useState(false)
+  const [inventarioList, setInventarioList] = useState([])
+  const [pedidosList, setPedidosList] = useState([])
   
 
   useEffect(()=>{
@@ -40,6 +43,58 @@ const App = () => {
           setCajaList([])
         })
   },[])
+
+
+    useEffect(()=>{
+        inventarioStore.collection("inventario").orderBy("fechaCompra", "desc")
+        .onSnapshot(snap => {
+            const inventario = []
+            let cantidad = 0
+            snap.forEach(doc => {
+                let producto = doc.data()
+                if(parseInt(producto.cantidad) > 0){
+                    cantidad = cantidad + parseInt(producto.cantidad)
+                    inventario.push({ id: doc.id, ...doc.data() })
+                }
+            })
+            console.log(inventario)
+            setInventarioList(inventario)
+            setCantidadExistencias(cantidad)
+        },(error)=>{  
+            setInventarioList([])
+            setCantidadExistencias(0)
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: error,
+            })
+        })
+    },[setCantidadExistencias])
+
+  useEffect(()=>{
+      inventarioStore.collection("pedidos").orderBy("fechaEntrega", "desc")
+      .onSnapshot(snap => {
+          const inventario = []
+          let cantidad = 0
+          snap.forEach(doc => {
+              let producto = doc.data()
+              if(!producto.entregado){
+                  cantidad = cantidad + 1
+                  inventario.push({ id: doc.id, ...doc.data() })
+              }
+          })
+          console.log(inventario)
+          setPedidosList(inventario)
+          setCantidadPedidos(cantidad)
+      },(error)=>{  
+        setPedidosList([])
+          Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: error,
+          })
+      })
+  },[setCantidadPedidos])
 
   useEffect(()=>{
     if(cajaList){
@@ -87,7 +142,7 @@ const App = () => {
                 :
                   isExistencias
                     ?
-                      <Existencias cantidadExistencias={cantidadExistencias} setCantidadExistencias={setCantidadExistencias}/>
+                      <Existencias cantidadExistencias={cantidadExistencias} inventarioList={inventarioList}/>
                     :
                       isCaja
                         ?
@@ -95,7 +150,7 @@ const App = () => {
                         :
                           isPedido
                             ?
-                              <Pedidos cantidadPedidos={cantidadPedidos} setCantidadPedidos={setCantidadPedidos}/>
+                              <Pedidos cantidadPedidos={cantidadPedidos} inventarioList={pedidosList}/>
                             :
                               isVentas
                                 ?

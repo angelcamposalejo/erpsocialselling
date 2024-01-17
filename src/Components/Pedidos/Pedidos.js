@@ -1,36 +1,7 @@
-import React, { useEffect, useState } from "react";
-import Swal from "sweetalert2"
-import { inventarioStore } from "../../config";
+import React from "react";
 import PedidoCard from "./PedidoCard";
 
-const Pedidos = ({ cantidadPedidos, setCantidadPedidos }) => {
-
-    const [inventarioList, setInventarioList] = useState([])
-
-    useEffect(()=>{
-        inventarioStore.collection("pedidos").orderBy("fechaEntrega", "desc")
-        .onSnapshot(snap => {
-            const inventario = []
-            let cantidad = 0
-            snap.forEach(doc => {
-                let producto = doc.data()
-                if(!producto.entregado){
-                    cantidad = cantidad + 1
-                    inventario.push({ id: doc.id, ...doc.data() })
-                }
-            })
-            console.log(inventario)
-            setInventarioList(inventario)
-            setCantidadPedidos(cantidad)
-        },(error)=>{  
-            setInventarioList([])
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: error,
-            })
-        })
-    },[setCantidadPedidos])
+const Pedidos = ({ cantidadPedidos, inventarioList }) => {
 
     return(
         <>
