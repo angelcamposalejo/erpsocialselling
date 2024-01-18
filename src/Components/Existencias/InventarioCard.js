@@ -19,7 +19,6 @@ const InventarioCard = ({ compra }) => {
 
     const handlePedidoClick = (item) => (event) => {
         event.preventDefault()
-        console.log(item)
         Swal.fire({
             customClass:'modalRegistro',
             html:`<div class="form_wrapper">
@@ -141,7 +140,7 @@ const InventarioCard = ({ compra }) => {
             }
         }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
-            console.log("Aqui")
+            //console.log("Aqui")
         })
     }
 
@@ -219,7 +218,6 @@ const InventarioCard = ({ compra }) => {
                         let lugarEntrega = document.getElementById('inputLugar').value
                         let cantidadRestante = item.cantidad - cantidadPedido
 
-                        console.log(item)
                         solicitarPedido(item)
                         async function solicitarPedido(objeto){
                             const responseInventario = await updateInventario(objeto.id,cantidadRestante)
@@ -279,7 +277,7 @@ const InventarioCard = ({ compra }) => {
             }
         }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
-            console.log("Aqui")
+            //console.log("Aqui")
         })
     }
 

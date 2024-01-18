@@ -12,7 +12,7 @@ import { inventarioStore } from './config';
 import Caja from './Components/Caja/Caja';
 import Compras from './Components/Compras/Compras';
 import Existencias from './Components/Existencias/Existencias';
-import Menu from './Components/Menu';
+import Menu from './Components/Menu/Menu';
 import Pedidos from './Components/Pedidos/Pedidos';
 import Ventas from './Components/Ventas/Ventas';
 
@@ -57,7 +57,6 @@ const App = () => {
                     inventario.push({ id: doc.id, ...doc.data() })
                 }
             })
-            console.log(inventario)
             setInventarioList(inventario)
             setCantidadExistencias(cantidad)
         },(error)=>{  
@@ -83,7 +82,6 @@ const App = () => {
                   inventario.push({ id: doc.id, ...doc.data() })
               }
           })
-          console.log(inventario)
           setPedidosList(inventario)
           setCantidadPedidos(cantidad)
       },(error)=>{  

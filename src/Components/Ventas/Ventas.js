@@ -17,7 +17,7 @@ const Ventas = () => {
                     inventario.push({ id: doc.id, ...doc.data() })
                 }
             })
-            console.log(inventario)
+            //console.log(inventario)
             setInventarioList(inventario)
         },(error)=>{  
             setInventarioList([])
