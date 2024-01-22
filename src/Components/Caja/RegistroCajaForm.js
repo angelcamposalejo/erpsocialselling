@@ -79,6 +79,7 @@ const RegistroCajaForm = ({ setIsRegistro,tipo }) => {
                                 <select value={tipoProducto} onChange={(e)=>handleTipoProductoChange(e.target.value)}>
                                     <option key={"Gasolina"} value={"Gasolina"}>{"Gasolina"}</option>
                                     <option key={"Estacionamiento"} value={"Estacionamiento"}>{"Estacionamiento"}</option>
+                                    <option key={"Paqueteria"} value={"Paqueteria"}>{"Paqueteria"}</option>
                                     <option key={"Retiro"} value={"Retiro"}>{"Retiro"}</option>
                                 </select>
                             

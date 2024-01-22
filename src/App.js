@@ -100,7 +100,8 @@ const App = () => {
         let entradas = 0
         let salidas = 0
         for(let i=0;i<cajaList.length;i++){
-          if(cajaList[i].concepto === "Compra" || cajaList[i].concepto === "Gasolina" || cajaList[i].concepto === "Estacionamiento"){
+          if(cajaList[i].concepto === "Compra" || cajaList[i].concepto === "Gasolina" 
+          || cajaList[i].concepto === "Estacionamiento" || cajaList[i].concepto === "Paqueteria"){
             salidas = salidas + parseFloat(cajaList[i].cantidad)
           }
           else{
