@@ -19,6 +19,7 @@ const InventarioCard = ({ compra }) => {
 
     const handlePedidoClick = (item) => (event) => {
         event.preventDefault()
+        console.log(item)
         Swal.fire({
             customClass:'modalRegistro',
             html:`<div class="form_wrapper">
